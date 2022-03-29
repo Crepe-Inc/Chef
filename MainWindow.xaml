@@ -3,15 +3,14 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Chef"
+        xmlns:local="clr-namespace:Chef" xmlns:tb="http://www.hardcodet.net/taskbar"
         mc:Ignorable="d"
-        Title="Chef" Height="530" Width="370"
+        Title="Chef" Height="730" Width="370"
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
         Background="Transparent"
-        AllowsTransparency="True"
->
+        AllowsTransparency="True">
     <Window.Resources>
         <Style TargetType="{x:Type Button}">
             <Setter Property="Template">
@@ -36,12 +35,32 @@
     <!-- 
         Background: #e9c493
         Text: #bc7c41
-        Background 2: #feebd6
+        Background 2: #feebd6r
     -->
-    <Border CornerRadius="10" Background="#e9c493">
+    <Border CornerRadius="10" Background="#e6b980" MouseDown="Border_MouseDown">
         <Grid>
-            <Button x:Name="closeBtn" Background="#feebd6" FontFamily="Open Sans" FontSize="35" Margin="23,80,0,0" VerticalAlignment="Top" Height="57" RenderTransformOrigin="0.507,0.499" HorizontalContentAlignment="Center"  VerticalContentAlignment="Center"
-            Padding="0,0,0,2" Content="×" HorizontalAlignment="Left" Width="57">
+            <tb:TaskbarIcon x:Name="myNotifyIcon"
+                    Visibility="Visible"
+                    ToolTipText="Test"
+                    IconSource="spatula.ico"
+                    MenuActivation="All">
+                <tb:TaskbarIcon.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Show" Click="fromTaskbar"/>
+                        <MenuItem Header="Exit" Click="exit"/>
+                    </ContextMenu>
+                </tb:TaskbarIcon.ContextMenu>
+            </tb:TaskbarIcon>
+            <Canvas Margin="4,4,4,3">
+                    <Canvas.Background>
+                        <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                            <GradientStop Color="#e6b980" Offset="0"/>
+                            <GradientStop Color="#EACDA3" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Canvas.Background>
+            </Canvas>
+                <Button x:Name="closeBtn" Background="#feebd6" FontFamily="Open Sans" FontSize="35" Margin="23,80,0,0" VerticalAlignment="Top" Height="57" RenderTransformOrigin="0.507,0.499" HorizontalContentAlignment="Center"  VerticalContentAlignment="Center"
+            Padding="0,0,0,2" Content="×" HorizontalAlignment="Left" Width="57" Click="toTaskbar">
                 <Button.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="30,30,30,30"/>
@@ -61,6 +80,30 @@
                        Foreground="#bc7c41" FontWeight="Bold"
             Text=" Chef"
             />
+
+            <Ellipse Margin="66,161,66,329" Stroke="black" RenderTransformOrigin="0.5,0.5">
+                <Ellipse.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="0"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Ellipse.RenderTransform>
+                <Ellipse.Fill>
+                    <ImageBrush ImageSource="/crepe.png" />
+                </Ellipse.Fill>
+            </Ellipse>
+            <Label x:Name="connectedLabel" HorizontalAlignment="Center" Margin="0,406,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.421,0.462"
+                   Content="Currently connected to:" 
+                   Foreground="#bc7c41"
+                   FontFamily="Open Sans" FontWeight="Bold" FontSize="15"
+                   />
+            <Label x:Name="connectedTxt" HorizontalAlignment="Center" Margin="0,441,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.421,0.462"
+                Content="CrepeTS @ 127.0.0.1" 
+                Foreground="#bc7c41"
+                FontFamily="Open Sans" FontSize="13" FontWeight="Normal"
+                   />
         </Grid>
     </Border>
 </Window>
