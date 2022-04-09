@@ -51,15 +51,17 @@
                     </ContextMenu>
                 </tb:TaskbarIcon.ContextMenu>
             </tb:TaskbarIcon>
-            <Canvas Margin="4,4,4,3">
-                    <Canvas.Background>
-                        <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
-                            <GradientStop Color="#e6b980" Offset="0"/>
-                            <GradientStop Color="#EACDA3" Offset="1"/>
-                        </LinearGradientBrush>
-                    </Canvas.Background>
+            <!--
+            <Canvas IsHitTestVisible="False" Margin="4,4,4,3">
+                <Canvas.Background>
+                    <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                        <GradientStop Color="#e6b980" Offset="0"/>
+                        <GradientStop Color="#EACDA3" Offset="1"/>
+                    </LinearGradientBrush>
+                </Canvas.Background>
             </Canvas>
-                <Button x:Name="closeBtn" Background="#feebd6" FontFamily="Open Sans" FontSize="35" Margin="23,80,0,0" VerticalAlignment="Top" Height="57" RenderTransformOrigin="0.507,0.499" HorizontalContentAlignment="Center"  VerticalContentAlignment="Center"
+            -->
+            <Button x:Name="closeBtn" Background="#feebd6" FontFamily="Open Sans" FontSize="35" Margin="23,80,0,0" VerticalAlignment="Top" Height="57" RenderTransformOrigin="0.507,0.499" HorizontalContentAlignment="Center"  VerticalContentAlignment="Center"
             Padding="0,0,0,2" Content="×" HorizontalAlignment="Left" Width="57" Click="toTaskbar">
                 <Button.Resources>
                     <Style TargetType="{x:Type Border}">
@@ -68,7 +70,7 @@
                 </Button.Resources>
             </Button>
             <Button x:Name="optionsBtn" Background="#feebd6" FontFamily="Open Sans" FontSize="35" Margin="291,80,23,0" VerticalAlignment="Top" Height="57" RenderTransformOrigin="0.507,0.499" HorizontalContentAlignment="Center"  VerticalContentAlignment="Center"
-            Padding="0,0,0,5" Content="···">
+            Padding="0,0,0,5" Content="···" Click="openProfileConfig">
                 <Button.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="30,30,30,30"/>
@@ -104,6 +106,52 @@
                 Foreground="#bc7c41"
                 FontFamily="Open Sans" FontSize="13" FontWeight="Normal"
                    />
+            <Grid Margin="10,496,10,140">
+                <ItemsControl Margin="10,0,0,10" x:Name="profileList">
+                    <ItemsControl.ItemContainerStyle>
+                        <Style>
+                            <Setter Property="FrameworkElement.Margin" Value="5"/>
+                        </Style>
+                    </ItemsControl.ItemContainerStyle>
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <UniformGrid Rows="1" MaxWidth="550"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.Items>
+                        <Button Content="">
+                            <Button.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="90"/>
+                                </Style>
+                            </Button.Resources>
+                            <Button.Background>
+                                <ImageBrush ImageSource="/crepe.png"/>
+                            </Button.Background>
+                        </Button>
+                        <Button Content="">
+                            <Button.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="90"/>
+                                </Style>
+                            </Button.Resources>
+                            <Button.Background>
+                                <ImageBrush ImageSource="/crepe.png"/>
+                            </Button.Background>
+                        </Button>
+                        <Button Content="">
+                            <Button.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="90"/>
+                                </Style>
+                            </Button.Resources>
+                            <Button.Background>
+                                <ImageBrush ImageSource="/crepe.png"/>
+                            </Button.Background>
+                        </Button>
+                    </ItemsControl.Items>
+                </ItemsControl>
+            </Grid>
         </Grid>
     </Border>
 </Window>

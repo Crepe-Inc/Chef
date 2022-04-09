@@ -61,6 +61,15 @@ namespace Chef {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {}.
+        /// </summary>
+        public static string hosts_json {
+            get {
+                return ResourceManager.GetString("hosts_json", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
         public static System.Drawing.Icon spatula {
